@@ -21,4 +21,4 @@ movies.set("The Dark Knight", 5); // 修改评分
 
 movies.delete("Inception"); // 删除电影记录
 
-console.log(movies.has("The Dark Knight")); // 检查电影是否存在
+console.log(movies.has("The Dark Knight")); // 检查电影是否存在 struct
