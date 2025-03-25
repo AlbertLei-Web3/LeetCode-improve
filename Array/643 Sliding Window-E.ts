@@ -1,4 +1,4 @@
-function maxSumSubarray(nums: number[], k: number): number {
+function maxAverageSubarray(nums: number[], k: number): number {
     let maxSum = 0;
     let windowSum = 0;
 
@@ -17,5 +17,5 @@ function maxSumSubarray(nums: number[], k: number): number {
 }
 
 // 测试用例
-console.log(maxSumSubarray([2, 3, 4, 1, 5], 3));  // 输出: 10
-console.log(maxSumSubarray([1, 2, 3, 4, 5, 6, 7, 8, 9], 2));  // 输出: 17
+console.log(maxAverageSubarray([2, 3, 4, 1, 5], 3));  // 输出: 10
+console.log(maxAverageSubarray([1, 2, 3, 4, 5, 6, 7, 8, 9], 2));  // 输出: 17
