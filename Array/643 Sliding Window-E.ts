@@ -13,7 +13,7 @@ function maxSumSubarray(nums: number[], k: number): number {
         maxSum = Math.max(maxSum, windowSum); // Update maxSum if windowSum is greater ()
     }
 
-    return maxSum;
+    return maxSum / k;
 }
 
 // 测试用例

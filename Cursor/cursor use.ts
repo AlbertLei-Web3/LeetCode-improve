@@ -89,18 +89,18 @@
 
 let movies1: Map<string, number> = new Map();
 
-movies.set("Inception", 9);
-movies.set("The Dark Knight", 9);
-movies.set("Interstellar", 8);
-movies.set("The Matrix", 8);
+movies1.set("Inception", 9);
+movies1.set("The Dark Knight", 9);
+movies1.set("Interstellar", 8);
+movies1.set("The Matrix", 8);
 
 // 遍历 HashMap | Iterate through HashMap
-for (let [movie, score] of movies.entries()) { // entries is a method that returns an iterator of [key, value] pairs
+for (let [movie, score] of movies1.entries()) { // entries is a method that returns an iterator of [key, value] pairs
     console.log(`${movie}: ${score}`); // 修正：使用反引号
 }
 
-movies.set("The Dark Knight", 5); // 修改评分
+movies1.set("The Dark Knight", 5); // 修改评分
 
-movies.delete("Inception"); // 删除电影记录
+movies1.delete("Inception"); // 删除电影记录
 
-console.log(movies.has("The Dark Knight")); // 检查电影是否存在 struct
+console.log(movies1.has("The Dark Knight")); // 检查电影是否存在 struct
