@@ -2,7 +2,7 @@ function search(nums: number[], target: number): number {
     let left = 0, right = nums.length - 1;
 
     while (left <= right) {
-        let mid = Math.floor(left + (right - left) / 2); // 计算中间索引，防止溢出
+        let mid = Math.floor((left + right ) / 2); 
 
         if (nums[mid] === target) {
             return mid; // 找到目标值，返回索引
