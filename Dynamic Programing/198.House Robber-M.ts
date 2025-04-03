@@ -1,4 +1,4 @@
-function rob(nums: number[]): number {
+function rob1(nums: number[]): number {
     const n = nums.length;
     if (n === 0) return 0;
     if (n === 1) return nums[0]; 
@@ -13,3 +13,8 @@ function rob(nums: number[]): number {
 
     return dp[n - 1];
 }
+
+// 解决动态规划的中心思想
+// 1. 抓状态
+// 2 列出状态转移方程
+
