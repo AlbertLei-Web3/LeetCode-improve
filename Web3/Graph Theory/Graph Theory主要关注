@@ -1,0 +1,121 @@
+# 图论问题的共性与解题方法
+
+## 图论问题的共性
+
+图论问题通常具有以下共性：
+
+1. **节点与边的关系模型** / **Node and Edge Relationship Model**
+   - 问题可以抽象为节点（对象）和边（关系）的集合。
+   - Problems can be abstracted as collections of nodes (objects) and edges (relationships).
+
+2. **连通性分析** / **Connectivity Analysis**
+   - 关注节点之间是否存在路径、路径的性质或特殊结构。
+   - Focus on whether paths exist between nodes, the properties of paths, or special structures.
+
+3. **遍历与搜索** / **Traversal and Search**
+   - 需要系统地访问图中的节点，通常使用深度优先搜索(DFS)或广度优先搜索(BFS)。
+   - Requires systematically visiting nodes in the graph, usually using Depth-First Search (DFS) or Breadth-First Search (BFS).
+
+## 解决图论问题的方法
+
+### 1. 建立图结构 / Build Graph Structure
+
+- **邻接表** / **Adjacency List**：对于稀疏图（边较少）更高效。
+  ```typescript
+  const graph: number[][] = Array.from({ length: n }, () => []);
+  ```
+
+- **邻接矩阵** / **Adjacency Matrix**：对于密集图（边较多）更高效。
+  ```typescript
+  const graph: boolean[][] = Array.from({ length: n }, () => Array(n).fill(false));
+  ```
+
+### 2. 选择合适的算法 / Choose Appropriate Algorithm
+
+- **深度优先搜索(DFS)** / **Depth-First Search**：适用于寻找所有可能路径、检测环等。
+  ```typescript
+  function dfs(node: number, visited: boolean[]) {
+      visited[node] = true;
+      for (const neighbor of graph[node]) {
+          if (!visited[neighbor]) {
+              dfs(neighbor, visited);
+          }
+      }
+  }
+  ```
+
+- **广度优先搜索(BFS)** / **Breadth-First Search**：适用于寻找最短路径等。
+  ```typescript
+  function bfs(start: number) {
+      const queue: number[] = [start];
+      const visited: boolean[] = Array(n).fill(false);
+      visited[start] = true;
+      
+      while (queue.length > 0) {
+          const node = queue.shift()!;
+          for (const neighbor of graph[node]) {
+              if (!visited[neighbor]) {
+                  visited[neighbor] = true;
+                  queue.push(neighbor);
+              }
+          }
+      }
+  }
+  ```
+
+- **拓扑排序** / **Topological Sort**：适用于有向无环图(DAG)，解决依赖关系问题。
+  ```typescript
+  function topologicalSort() {
+      const inDegree: number[] = Array(n).fill(0);
+      // 计算入度 / Calculate in-degrees
+      // 使用BFS或DFS进行拓扑排序 / Use BFS or DFS for topological sorting
+  }
+  ```
+
+### 3. 问题类型特定的处理 / Problem-Specific Processing
+
+- **连通分量** / **Connected Components**：使用DFS或并查集查找。
+- **最短路径** / **Shortest Path**：使用BFS（无权图）或Dijkstra算法（带权图）。
+- **环检测** / **Cycle Detection**：使用DFS带状态标记或拓扑排序。
+- **二分图检测** / **Bipartite Graph**：使用染色法。
+
+## 常见图论问题类型及解法
+
+1. **路径问题** / **Path Problems**
+   - 判断两点是否连通：DFS/BFS
+   - 最短路径：BFS（无权）/Dijkstra（带权）
+
+2. **环检测** / **Cycle Detection**
+   - 有向图：DFS + 三色标记法
+   - 无向图：DFS + 父节点标记
+
+3. **拓扑排序** / **Topological Sort**
+   - 课程安排、任务依赖：Kahn算法（BFS）或DFS + 后序遍历
+
+4. **连通性分析** / **Connectivity Analysis**
+   - 连通分量计数：DFS森林
+   - 图的割点和桥：Tarjan算法
+
+## 解题步骤总结 / Solution Steps Summary
+
+1. **识别问题类型** / **Identify Problem Type**
+   - 分析问题是否可以建模为图结构。
+   - Analyze whether the problem can be modeled as a graph structure.
+
+2. **建立图表示** / **Establish Graph Representation**
+   - 确定节点和边，选择合适的数据结构。
+   - Determine nodes and edges, choose appropriate data structures.
+
+3. **选择算法** / **Choose Algorithm**
+   - 根据问题类型选择合适的图算法。
+   - Select appropriate graph algorithms based on the problem type.
+
+4. **设计解决方案** / **Design Solution**
+   - 实现算法，处理边界情况。
+   - Implement the algorithm, handle edge cases.
+
+5. **验证结果** / **Verify Results**
+   - 检查算法在各种输入下的正确性。
+   - Check the correctness of the algorithm under various inputs.
+
+
