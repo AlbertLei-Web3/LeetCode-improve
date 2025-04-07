@@ -11,7 +11,7 @@ class ListNode {
 // 迭代解法 | Iterative Solution
 function reverseList(head: ListNode | null): ListNode | null {
     let prev: ListNode | null = null; 
-    let curr: ListNode | null = head;
+    let curr: ListNode | null = head; 
 
     while (curr !== null) {
         let next: ListNode | null = curr.next; //Save the next node
@@ -41,3 +41,15 @@ function reverseList1(head: ListNode | null): ListNode | null {
     
     return newHead;
 }
+
+// 反转链表解法概括
+// 初始化指针：
+// prev 指向 null（前一个节点）。
+// curr 指向链表头（当前节点）。
+// 遍历链表：
+// 使用 while (curr !== null) 循环：
+// 保存下一个节点 next = curr.next。
+// 反转指针 curr.next = prev。
+// 更新指针 prev = curr 和 curr = next。
+// 返回新头节点：
+// 当 curr 为 null 时，返回 prev（新的头节点）。
