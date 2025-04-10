@@ -16,7 +16,7 @@ function numIslands(grid: string[][]): number {
     // Function DFS to mark all connected land
     function dfs(r: number, c: number) {
         // Check bounds
-        if (r < 0 || c <0 || r >= rows || c >= cols || grid[r][c] === '0') {
+        if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === '0') {
             return;
     }
 
