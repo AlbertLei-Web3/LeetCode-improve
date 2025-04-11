@@ -1,7 +1,10 @@
 // 题目描述
-// 在区块链网络中，存在多个交易，每个交易可能依赖于之前的某些交易。例如，交易 B 可能需要等待交易 A 完成后才能执行（这在 DeFi 中很常见，比如先授权代币，然后才能交易）。
-// 给定一组交易 n（编号从 0 到 n-1）和它们之间的依赖关系 dependencies，其中 dependencies[i] = [a, b] 表示交易 a 依赖于交易 b（即交易 b 必须在交易 a 之前执行）。
+// 在区块链网络中，存在多个交易，每个交易可能依赖于之前的某些交易。例如，交易 B 可能需要等待交易 A 完成后才能执行
+// （这在 DeFi 中很常见，比如先授权代币，然后才能交易）。
+// 给定一组交易 n（编号从 0 到 n-1）和它们之间的依赖关系 dependencies，
+// 其中 dependencies[i] = [a, b] 表示交易 a 依赖于交易 b（即交易 b 必须在交易 a 之前执行）。
 // 请判断是否存在一种执行所有交易的顺序。如果存在，返回 true；否则返回 false。
+//有向无环图的英语是 Directed Acyclic Graph，通常缩写为 DAG。
 
 function canExecuteAllTransactions(n: number, dependencies: number[][]): boolean {
     // Build table and in-degree array

@@ -1,14 +1,14 @@
 function canFinish(numCourses: number, prerequisites: number[][]): boolean {
+    // 1. 构建图和入度数组
     const graph: number[][] = Array.from({ length: numCourses }, () => []);
     const inDegree: number[] = Array(numCourses).fill(0);
     
-    // 建立图和入度数组 / Build the graph and in-degree array
     for (const [course, prereq] of prerequisites) {
-        graph[prereq].push(course);
-        inDegree[course]++;
+        graph[prereq].push(course); // prereq -> course 表示course依赖prereq
+        inDegree[course]++; // course的入度加1
     }
     
-    // 初始化队列 / Initialize the queue
+    // 2. 初始化队列，加入所有入度为0的节点
     const queue: number[] = [];
     for (let i = 0; i < numCourses; i++) {
         if (inDegree[i] === 0) {
@@ -16,21 +16,23 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
         }
     }
     
-    let count = 0; // 记录已学习的课程数量 / Count of completed courses
+    let count = 0; // 记录处理过的节点数
     
-    // 拓扑排序 / Topological sorting
+    // 3. BFS处理
     while (queue.length > 0) {
-        const course = queue.shift()!;
-        count++;
+        const course = queue.shift()!; 
+        count++; // 处理一个节点
         
+        // 遍历所有依赖当前节点的节点
         for (const nextCourse of graph[course]) {
-            inDegree[nextCourse]--;
+            inDegree[nextCourse]--; // 减少依赖
+            // 如果没有其他依赖，则可以学习该课程
             if (inDegree[nextCourse] === 0) {
                 queue.push(nextCourse);
             }
         }
     }
     
-    // 判断是否可以完成所有课程 / Check if all courses can be completed
+    // 4. 检查是否有环
     return count === numCourses;
 }
