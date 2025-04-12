@@ -30,7 +30,7 @@ function numIslands(grid: string[][]): number {
     dfs(r, c + 1); //right
     }
 
-    // Iterate through all cells in the grid
+    // Iterate through all cells in the grid 遍历网格中的所有单元格
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             if (grid[r][c] === '1') {

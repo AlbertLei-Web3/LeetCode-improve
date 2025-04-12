@@ -13,7 +13,8 @@ function canExecuteAllTransactions(n: number, dependencies: number[][]): boolean
 
     // Fill the dependency relation
     for (const [a, b] of dependencies) {
-        // transaction a depends on transaction b, so add an edge from b -> a
+        // transaction a depends on transaction b, so add an edge from b -> a 
+        // 交易 a 依赖于交易 b，所以添加一条从 b 到 a 的边
         graph[b].push(a);
         inDegree[a]++;
     }
@@ -30,6 +31,7 @@ function canExecuteAllTransactions(n: number, dependencies: number[][]): boolean
 
     let count = 0;
 
+    // 拓扑排序 / Topological sorting
     while (queue.length > 0) {
         const tx = queue.shift()!;
         count++;
