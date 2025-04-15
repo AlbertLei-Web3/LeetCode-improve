@@ -1,3 +1,16 @@
+// 问题描述
+// 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+// 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+
+// 示例
+// 输入: [3,2,1,5,6,4], k = 2
+// 输出: 5
+
+// 输入: [3,2,3,1,2,4,5,5,6], k = 4
+// 快速选择:
+// 时间复杂度: 平均情况 O(n)，最坏情况 O(n²)
+// 空间复杂度: O(log n)，递归调用栈的空间
+
 function findKthLargest(nums: number[], k: number): number {
     // index of the kth largest element 转化为索引（第k大的元素在排序后的索引为nums.length - k）
     const targetIndex = nums.length - k;
