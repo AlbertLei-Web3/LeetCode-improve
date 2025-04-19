@@ -28,10 +28,10 @@ class Trie {
         let current = this.root;
 
         for (const char of word) {
-            if (!current.children.has(char)) {
-                current.children.set(char, new TrieNode());
+            if (!current.children.has(char)) { // 如果字符不存在，则创建新的节点
+                current.children.set(char, new TrieNode()); // 创建新的节点
             }
-            current = current.children.get(char)!;
+            current = current.children.get(char)!; // 移动到下一个节点
         }
 
         current.isEndOfWord = true;
@@ -46,10 +46,10 @@ class Trie {
         let current = this.root;
 
         for (const char of word) {
-            if (!current.children.has(char)) {
+            if (!current.children.has(char)) { // 如果字符不存在，则返回false
                 return false;
             }
-            current = current.children.get(char)!;
+            current = current.children.get(char)!; // 移动到下一个节点
         }
 
         return current.isEndOfWord;
@@ -62,10 +62,10 @@ class Trie {
         let current = this.root;
 
         for (const char of prefix) {
-            if (!current.children.has(char)) {
+            if (!current.children.has(char)) { // 如果字符不存在，则返回false
                 return false;
             }
-            current = current.children.get(char)!;
+            current = current.children.get(char)!; // 移动到下一个节点
         }
 
         return true;
