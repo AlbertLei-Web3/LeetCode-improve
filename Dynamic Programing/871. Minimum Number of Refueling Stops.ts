@@ -14,12 +14,15 @@
 // 如果无法到达终点，返回 -1。
 
 // 思路：
-// 1. 使用贪心算法，每次选择当前油量最多的加油站加油。
-// 2. 使用动态规划，记录每个加油站加油后的油量和加油次数。
-// 3. 使用优先队列，每次选择当前油量最多的加油站加油。
+// 1. 使用贪心算法，每次选择当前可达范围内油量最多的加油站加油，尽可能走得更远。
+// 2. 为实现贪心策略，使用最大堆（优先队列）来保存所有可达加油站的油量。T
+// TypeScript默认的数组不是最大堆，所以需要手动实现,用数组+排序模拟最大堆
+// 3. 每当无法到达终点，就从最大堆中取出油最多的站加油，直到可以到达终点或无油可加。
+
 
 function minRefuelStops(target: number, startFuel: number, stations: number[][]): number{
     //Max heap to store fuels of passed stations
+    //用最大堆存储已通过加油站的油量
     const maxHeap: number[] = [];
 
     let fuel = startFuel;

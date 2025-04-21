@@ -1,16 +1,29 @@
+// 问题描述
+// 给你一个字符串数组 strs，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
+// 字母异位词 是由重新排列源单词的所有字母得到的一个新单词，所有源单词中的字母通常恰好只用一次。
+
+// 解题思路
+// 字母异位词的特点是包含相同的字母，只是字母顺序不同。因此，我们可以将每个单词按字母表顺序排序，
+// 这样所有的字母异位词排序后都会得到相同的字符串。
+// 我们可以使用这个排序后的字符串作为哈希表的键，原始字符串列表作为值。
+
 function groupAnagrams(strs: string[]): string[][] {
     const map = new Map<string, string[]>();
 
     for (const str of strs) {
+        // 将字符串排序以创建一个唯一的键
         const sortedStr = str.split('').sort().join('');
-
+        
+        // 如果这个排序后的字符串已经在map中，将当前字符串添加到对应的列表
         if (map.has(sortedStr)) {
             map.get(sortedStr)!.push(str);
-        }
-        else {
+        } else {
+            // 否则，创建一个新的列表
             map.set(sortedStr, [str]);
         }
     }
+    
+    // 返回map中的所有值（字母异位词组）
     return Array.from(map.values());
 }
 
