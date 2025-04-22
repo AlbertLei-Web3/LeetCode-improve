@@ -38,33 +38,40 @@ function subarraySum(nums: number[], k: number): number {
 
 // 详细过程解析
 // 让我们以示例 nums = [1,2,3,4,5], k = 9 为例，详细解释算法的执行过程：
+
 // 初始化：
 // prefixSumCount = {0: 1} (前缀和为0出现1次)
 // count = 0 (结果计数器)
 // currentSum = 0 (当前前缀和)
+
 // 遍历数组：
 // 处理 nums[0] = 1:
 // currentSum = 0 + 1 = 1
 // 检查 currentSum - k = 1 - 9 = -8 是否在哈希表中: 否
 // 更新哈希表: prefixSumCount = {0: 1, 1: 1}
+
 // 处理 nums[1] = 2:
 // currentSum = 1 + 2 = 3
 // 检查 currentSum - k = 3 - 9 = -6 是否在哈希表中: 否
 // 更新哈希表: prefixSumCount = {0: 1, 1: 1, 3: 1}
+
 // 处理 nums[2] = 3:
 // currentSum = 3 + 3 = 6
 // 检查 currentSum - k = 6 - 9 = -3 是否在哈希表中: 否
 // 更新哈希表: prefixSumCount = {0: 1, 1: 1, 3: 1, 6: 1}
+
 // 处理 nums[3] = 4:
 // currentSum = 6 + 4 = 10
 // 检查 currentSum - k = 10 - 9 = 1 是否在哈希表中: 是，出现了1次
 // 增加计数: count = 0 + 1 = 1
 // 更新哈希表: prefixSumCount = {0: 1, 1: 1, 3: 1, 6: 1, 10: 1}
+
 // 处理 nums[4] = 5:
 // currentSum = 10 + 5 = 15
 // 检查 currentSum - k = 15 - 9 = 6 是否在哈希表中: 是，出现了1次
 // 增加计数: count = 1 + 1 = 2
 // 更新哈希表: prefixSumCount = {0: 1, 1: 1, 3: 1, 6: 1, 10: 1, 15: 1}
+
 // 最终结果:
 // 返回 count = 2 (有2个子数组的和为9)
 // 这两个子数组是: [2,3,4] 和 [4,5]
